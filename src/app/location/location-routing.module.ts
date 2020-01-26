@@ -30,7 +30,7 @@ const routes: Routes = [
     component: ViewSingleBusDetailsComponent
   },
   {
-    path: "booknow/:busid/customer/:customerid",
+    path: "booknow/:busid/seat/:seatno",
     component: BookNowComponent
   }
 ];

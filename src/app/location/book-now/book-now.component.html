@@ -1,1 +1,55 @@
 <p>book-now works!</p>
+<div class="row">
+  <div class="col-md-4" style="background: 1px solid red;">
+    <label>Customer Details</label>
+    <div>
+      <label>Email Id</label>
+      {{ customerDetails.emailId }}
+    </div>
+    <div>
+      <label>Mobile Number</label>
+      {{ customerDetails.mobileNumber }}
+    </div>
+  </div>
+  <div class="col-md-4" style="background: 1px solid red;">
+    <label>Bus Details</label>
+    <div>
+      <label>Bus Number</label>
+      {{ busDetails.busNumber }}
+    </div>
+    <div>
+      <label>Pickup Location</label>
+      {{ busDetails.pickup }}
+    </div>
+    <div>
+      <label>Destination Location</label>
+      {{ busDetails.destination }}
+    </div>
+    <div>
+      <label>Bus Details</label>
+      {{ busDetails.busDetails }}
+    </div>
+    <div>
+      <label>Price</label>
+      {{ busDetails.price }}
+    </div>
+    <div style="border: 1px solid red;">
+      <label>
+        Seat No
+      </label>
+      {{ seatNo }}
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label>Booking</label>
+    <h5>Coupon</h5>
+    <input
+      type="text"
+      placeholder="Enter the coupon"
+      #coupon
+      (keyup)="checkCoupon(coupon, busDetails.price)"
+    />
+    <!--  <button>Book Now</button> -->
+    {{ priceDeduction }}
+  </div>
+</div>

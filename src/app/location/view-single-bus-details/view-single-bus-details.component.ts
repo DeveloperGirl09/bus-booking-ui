@@ -35,6 +35,6 @@ export class ViewSingleBusDetailsComponent implements OnInit {
     );
   }
   selectSeat(data) {
-    this.router.navigate(["/booknow", this.busId, "customer", data]);
+    this.router.navigate(["/booknow", this.busId, "seat", data]);
   }
 }
