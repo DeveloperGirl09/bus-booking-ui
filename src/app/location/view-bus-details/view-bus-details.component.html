@@ -1,0 +1,28 @@
+<h5>Bus Details</h5>
+
+<div
+  *ngFor="let data of busDetails"
+  style="border: 1px solid red;"
+  (click)="viewBusDetails(data._id)"
+>
+  <div>
+    <label>Bus Number</label>
+    {{ data.busNumber }}
+  </div>
+  <div>
+    <label>Pickup Location</label>
+    {{ data.pickup }}
+  </div>
+  <div>
+    <label>Destination Location</label>
+    {{ data.destination }}
+  </div>
+  <div>
+    <label>Bus Details</label>
+    {{ data.busDetails }}
+  </div>
+  <div>
+    <label>Price</label>
+    {{ data.price }}
+  </div>
+</div>

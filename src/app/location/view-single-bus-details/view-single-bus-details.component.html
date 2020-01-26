@@ -1,0 +1,36 @@
+<p>view-single-bus-details works!</p>
+<div>
+  <div>
+    <label>Bus Number</label>
+    {{ busDetails.busNumber }}
+  </div>
+  <div>
+    <label>Pickup Location</label>
+    {{ busDetails.pickup }}
+  </div>
+  <div>
+    <label>Destination Location</label>
+    {{ busDetails.destination }}
+  </div>
+  <div>
+    <label>Bus Details</label>
+    {{ busDetails.busDetails }}
+  </div>
+  <div>
+    <label>Price</label>
+    {{ busDetails.price }}
+  </div>
+
+  <label>Select the Seat Number</label>
+  <div class="row">
+    <div
+      class="col-md-6"
+      *ngFor="let data of seatNo"
+      (click)="selectSeat(data)"
+    >
+      <div style="border: 1px solid red; width: fit-content; padding: 50px;">
+        {{ data }}
+      </div>
+    </div>
+  </div>
+</div>
