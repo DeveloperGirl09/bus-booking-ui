@@ -1,0 +1,37 @@
+<div class="col-md-12">
+  <form [formGroup]="couponForm" (ngSubmit)="createCoupons()">
+    <div class="col-md-12">
+      <input
+        type="text"
+        formControlName="couponName"
+        placeholder="couponName"
+      />
+    </div>
+    <div class="col-md-12">
+      <input
+        type="text"
+        formControlName="couponDescription"
+        placeholder="couponDescription"
+      />
+    </div>
+
+    <div class="col-md-12">
+      <input
+        type="text"
+        formControlName="priceLimit"
+        placeholder="priceLimit"
+      />
+    </div>
+    <div class="col-md-12">
+      <input
+        type="text"
+        formControlName="amountToDeduct"
+        placeholder="amountToDeduct"
+      />
+    </div>
+
+    <div>
+      <button type="submit">Add Coupon</button>
+    </div>
+  </form>
+</div>

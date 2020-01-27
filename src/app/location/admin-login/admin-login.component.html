@@ -1,0 +1,20 @@
+<div class="col-md-12">
+  <form [formGroup]="customerForm" (ngSubmit)="customerLogin()">
+    <div class="col-md-12">
+      <input type="text" formControlName="emailId" placeholder="emailID" />
+    </div>
+    <div class="col-md-12">
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="password"
+      />
+    </div>
+    <div class="col-md-12">
+      <div *ngIf="pwdError === true">
+        <p style="color: red">Invalid Account</p>
+      </div>
+      <button type="submit">Login</button>
+    </div>
+  </form>
+</div>

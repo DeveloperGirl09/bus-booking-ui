@@ -10,6 +10,12 @@ import { ViewSingleBusDetailsComponent } from "./view-single-bus-details/view-si
 import { BookNowComponent } from "./book-now/book-now.component";
 import { SuccessBookingComponent } from "./success-booking/success-booking.component";
 import { CustomerRegistrationComponent } from "./customer-registration/customer-registration.component";
+import { AdminLoginComponent } from "./admin-login/admin-login.component";
+import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
+import { CreateBusDetailsComponent } from "./create-bus-details/create-bus-details.component";
+import { CreateCouponComponent } from "./create-coupon/create-coupon.component";
+import { ViewBusComponent } from "./view-bus/view-bus.component";
+import { ViewCouponComponent } from "./view-coupon/view-coupon.component";
 const routes: Routes = [
   {
     path: "list",
@@ -42,6 +48,26 @@ const routes: Routes = [
   {
     path: "registration",
     component: CustomerRegistrationComponent
+  },
+  {
+    path: "admindashboard",
+    component: AdminDashboardComponent
+  },
+  {
+    path: "addbusdetails",
+    component: CreateBusDetailsComponent
+  },
+  {
+    path: "addcoupon",
+    component: CreateCouponComponent
+  },
+  {
+    path: "viewbus",
+    component: ViewBusComponent
+  },
+  {
+    path: "viewcoupon",
+    component: ViewCouponComponent
   }
 ];
 

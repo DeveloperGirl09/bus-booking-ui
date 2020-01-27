@@ -15,6 +15,13 @@ import { BookNowComponent } from "./book-now/book-now.component";
 import { SuccessBookingComponent } from "./success-booking/success-booking.component";
 import { NavComponent } from "./nav/nav.component";
 import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminMenuComponent } from './admin-menu/admin-menu.component';
+import { CreateBusDetailsComponent } from './create-bus-details/create-bus-details.component';
+import { CreateCouponComponent } from './create-coupon/create-coupon.component';
+import { ViewBusComponent } from './view-bus/view-bus.component';
+import { ViewCouponComponent } from './view-coupon/view-coupon.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +35,14 @@ import { CustomerRegistrationComponent } from './customer-registration/customer-
     BookNowComponent,
     SuccessBookingComponent,
     NavComponent,
-    CustomerRegistrationComponent
+    CustomerRegistrationComponent,
+    AdminLoginComponent,
+    AdminDashboardComponent,
+    AdminMenuComponent,
+    CreateBusDetailsComponent,
+    CreateCouponComponent,
+    ViewBusComponent,
+    ViewCouponComponent
   ],
   imports: [
     CommonModule,

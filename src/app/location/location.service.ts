@@ -7,6 +7,7 @@ import { Observable } from "rxjs";
 })
 export class LocationService {
   serviceUrl = "http://localhost:3812/";
+  /* serviceUrl = "https://k5wdcg5lge.execute-api.ap-south-1.amazonaws.com/qa/"; */
   constructor(private http: HttpClient) {}
 
   fetchStates(): Observable<any> {
@@ -53,6 +54,18 @@ export class LocationService {
   }
   createCustomer(data): Observable<any> {
     const url = this.serviceUrl + "createcustomer";
+    return this.http.post<any>(url, data);
+  }
+  adminValidate(data): Observable<any> {
+    const url = this.serviceUrl + "loginadminuser";
+    return this.http.post<any>(url, data);
+  }
+  createBus(data): Observable<any> {
+    const url = this.serviceUrl + "createbusdetails";
+    return this.http.post<any>(url, data);
+  }
+  createCoupon(data): Observable<any> {
+    const url = this.serviceUrl + "createcoupon";
     return this.http.post<any>(url, data);
   }
 }

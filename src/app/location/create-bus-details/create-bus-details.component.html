@@ -1,0 +1,36 @@
+<div class="col-md-12">
+  <form [formGroup]="busForm" (ngSubmit)="createBus()">
+    <div class="col-md-12">
+      <input type="text" formControlName="busNumber" placeholder="Bus number" />
+    </div>
+    <div class="col-md-12">
+      <input
+        type="text"
+        formControlName="busDetails"
+        placeholder="Bus Details"
+      />
+    </div>
+
+    <div class="col-md-12">
+      <input type="text" formControlName="price" placeholder="Price" />
+    </div>
+    <div class="col-md-12">
+      <input
+        type="text"
+        formControlName="pickup"
+        placeholder="Pickup Location"
+      />
+    </div>
+    <div class="col-md-12">
+      <input
+        type="text"
+        formControlName="destination"
+        placeholder="Destination"
+      />
+    </div>
+
+    <div>
+      <button type="submit">Add bus</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,10 @@
+<h5>Coupon details</h5>
+<div>
+  <button (click)="addNewCoupon()" *ngIf="addCoupon">Add coupon</button>
+</div>
+<small>Coupon Name: {{ couponDetails[0].couponName }}</small> <br />
+<small>Coupon Description: {{ couponDetails[0].couponDescription }}</small>
+<br />
+
+<small>PriceLimit: {{ couponDetails[0].priceLimit }}</small> <br />
+<small>Amount to Dedcut:{{ couponDetails[0].amountToDeduct }}</small>
