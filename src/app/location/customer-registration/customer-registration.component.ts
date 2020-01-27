@@ -1,15 +1,16 @@
 import { Component, OnInit } from "@angular/core";
+
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LocationService } from "../location.service";
-import { Customer } from "./customer.model";
+import { Customer } from "../customer-login/customer.model";
 
 @Component({
-  selector: "app-customer-login",
-  templateUrl: "./customer-login.component.html",
-  styleUrls: ["./customer-login.component.css"]
+  selector: "app-customer-registration",
+  templateUrl: "./customer-registration.component.html",
+  styleUrls: ["./customer-registration.component.css"]
 })
-export class CustomerLoginComponent implements OnInit {
+export class CustomerRegistrationComponent implements OnInit {
   customerForm: FormGroup;
   customerModel: Customer;
   pwdError: boolean;
@@ -22,18 +23,18 @@ export class CustomerLoginComponent implements OnInit {
   ngOnInit() {
     this.createForm();
   }
-
   createForm() {
     this.customerForm = this.fb.group({
       emailId: ["", Validators.required],
-      password: ["", Validators.required]
+      password: ["", Validators.required],
+      mobileNumber: ["", Validators.required]
     });
   }
-  customerLogin() {
+  customerRegistration() {
     this.customerModel = new Customer();
     this.customerModel.emailId = this.customerForm.controls.emailId.value;
     this.customerModel.password = this.customerForm.controls.password.value;
-    this.locationService.customerValidate(this.customerModel).subscribe(
+    this.locationService.createCustomer(this.customerModel).subscribe(
       data => {
         console.log(data);
         if (data.length === 0) {
@@ -44,8 +45,8 @@ export class CustomerLoginComponent implements OnInit {
         } else {
           /* this.setCookie(data[0]._id); */
           sessionStorage.setItem("customerlogin", "true");
-          sessionStorage.setItem("customerId", data[0].customerId);
-          sessionStorage.setItem("emailId", data[0].emailId);
+          sessionStorage.setItem("customerId", data.customerId);
+          sessionStorage.setItem("emailId", data.emailId);
           this.router.navigate(["/test/busdetails"]);
         }
       },
@@ -53,8 +54,5 @@ export class CustomerLoginComponent implements OnInit {
         console.log(err);
       }
     );
-  }
-  register() {
-    this.router.navigate(["/test/registration"]);
   }
 }

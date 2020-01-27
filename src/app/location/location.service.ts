@@ -51,4 +51,8 @@ export class LocationService {
     const url = this.serviceUrl + "sendinvoice";
     return this.http.post<any>(url, data);
   }
+  createCustomer(data): Observable<any> {
+    const url = this.serviceUrl + "createcustomer";
+    return this.http.post<any>(url, data);
+  }
 }

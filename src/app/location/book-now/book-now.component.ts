@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { LocationService } from "../location.service";
 import { BusDetails } from "../view-bus-details/busDetails.model";
 import { Booking } from "./booking.model";
+import { Invoice } from "../success-booking/invoice.model";
 
 @Component({
   selector: "app-book-now",
@@ -23,6 +24,8 @@ export class BookNowComponent implements OnInit {
   bookingPrice;
   enableCoupon: boolean;
   bookingDetails: Booking;
+  invoice: Invoice;
+  bookedDetails;
 
   constructor(
     private locationService: LocationService,
@@ -101,7 +104,22 @@ export class BookNowComponent implements OnInit {
     this.bookingDetails.amountDeducted = this.priceDeduction;
     this.locationService.createBooking(this.bookingDetails).subscribe(
       data => {
+        this.bookedDetails = data;
+        this.sendInvoice();
         this.router.navigate(["/success", data._id]);
+        console.log(data);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+  sendInvoice() {
+    this.invoice = new Invoice();
+    this.invoice.customerEmailId = this.bookedDetails.customerEmailID;
+    this.invoice.content = this.bookingDetails.toString();
+    this.locationService.createInvoice(this.invoice).subscribe(
+      data => {
         console.log(data);
       },
       err => {

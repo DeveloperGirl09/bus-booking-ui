@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  <form [formGroup]="customerForm" (ngSubmit)="customerLogin()">
+  <form [formGroup]="customerForm" (ngSubmit)="customerRegistration()">
     <div class="col-md-12">
       <input type="text" formControlName="emailId" placeholder="emailID" />
     </div>
@@ -11,13 +11,14 @@
       />
     </div>
     <div class="col-md-12">
-      <div *ngIf="pwdError === true">
-        <p style="color: red">Invalid Account</p>
-      </div>
-      <button type="submit">Login</button>
+      <input
+        type="text"
+        formControlName="mobileNumber"
+        placeholder="mobile number"
+      />
     </div>
-    <div class="col-md-12">
-      <a (click)="register()">Register</a>
+    <div>
+      <button type="submit">Register</button>
     </div>
   </form>
 </div>

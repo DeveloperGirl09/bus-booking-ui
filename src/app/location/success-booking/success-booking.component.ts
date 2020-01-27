@@ -27,7 +27,7 @@ export class SuccessBookingComponent implements OnInit {
       data => {
         this.bookingDetails = data;
         console.log(data);
-        this.sendInvoice();
+        /* this.sendInvoice(); */
       },
       err => {
         console.log(err);
