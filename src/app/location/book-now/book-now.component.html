@@ -30,8 +30,18 @@
       {{ busDetails.busDetails }}
     </div>
     <div>
-      <label>Price</label>
-      {{ busDetails.price }}
+      <div *ngIf="busDetails.couponApply" style="border: 1px solid yellow;">
+        <label>Price</label>
+        <s> {{ busDetails.price }}</s> {{ bookingPrice }}
+      </div>
+      <div *ngIf="!busDetails.couponApply">
+        <label>Price</label>
+        {{ busDetails.price }}
+      </div>
+      <div *ngIf="busDetails.couponApply">
+        <label> Amount deducted</label>
+        {{ priceDeduction }}
+      </div>
     </div>
     <div style="border: 1px solid red;">
       <label>
@@ -42,14 +52,16 @@
   </div>
   <div class="col-md-4">
     <label>Booking</label>
-    <h5>Coupon</h5>
-    <input
-      type="text"
-      placeholder="Enter the coupon"
-      #coupon
-      (keyup)="checkCoupon(coupon, busDetails.price)"
-    />
-    <!--  <button>Book Now</button> -->
-    {{ priceDeduction }}
+    <button (click)="createBooking()">Book Now</button>
+    <div *ngIf="enableCoupon">
+      <h5>Coupon</h5>
+      <input type="text" placeholder="Enter the coupon" #coupon />
+      <a (click)="checkCoupon(coupon, busDetails.price)">
+        Apply coupon
+      </a>
+      <br />
+      <small>{{ couponDetails[0].couponName }}</small> <br />
+      <small>{{ couponDetails[0].couponDescription }}</small>
+    </div>
   </div>
 </div>

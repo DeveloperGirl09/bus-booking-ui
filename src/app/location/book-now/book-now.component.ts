@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { LocationService } from "../location.service";
 import { BusDetails } from "../view-bus-details/busDetails.model";
+import { Booking } from "./booking.model";
 
 @Component({
   selector: "app-book-now",
@@ -18,6 +19,11 @@ export class BookNowComponent implements OnInit {
   couponDetails;
   priceDeduction;
   deductedPrice;
+  enablePriceDeduction: boolean;
+  bookingPrice;
+  enableCoupon: boolean;
+  bookingDetails: Booking;
+
   constructor(
     private locationService: LocationService,
     private router: Router,
@@ -47,7 +53,11 @@ export class BookNowComponent implements OnInit {
     this.locationService.getCoupon().subscribe(
       data => {
         this.couponDetails = data;
-        console.log(data, "coupon");
+        if (data.length !== 0) {
+          this.enableCoupon = true;
+        } else {
+          this.enableCoupon = false;
+        }
       },
       err => {
         console.log(err);
@@ -58,7 +68,6 @@ export class BookNowComponent implements OnInit {
     this.locationService.getSingleBusDetails(this.busId).subscribe(
       data => {
         this.busDetails = data;
-        console.log(data);
       },
       err => {
         console.log(err);
@@ -66,16 +75,38 @@ export class BookNowComponent implements OnInit {
     );
   }
   checkCoupon(coupon, price) {
-    console.log("coupon", coupon.value);
-    console.log("price", price);
-    this.couponDetails.forEach(element => {
-      console.log(element, "coupon");
-      if (element.couponName === coupon.value && element.priceLimit <= price) {
-        this.priceDeduction = element.amountToDeduct;
-        console.log(this.priceDeduction);
-      } else {
-        /* this.priceDeduction = 0; */
+    if (
+      this.couponDetails[0].couponName === coupon.value &&
+      this.couponDetails[0].priceLimit <= price
+    ) {
+      this.busDetails.couponApply = true;
+      this.priceDeduction = this.couponDetails[0].amountToDeduct;
+      this.bookingPrice = this.busDetails.price - this.priceDeduction;
+    } else {
+      this.busDetails.couponApply = false;
+      this.bookingPrice = this.busDetails.price;
+    }
+  }
+  createBooking() {
+    console.log("create booking");
+    this.bookingDetails = new Booking();
+    this.bookingDetails.busDetails = this.busDetails.busDetails;
+    this.bookingDetails.busId = this.busId;
+    this.bookingDetails.couponId = this.couponDetails[0]._id;
+    this.bookingDetails.couponName = this.couponDetails[0].couponName;
+    this.bookingDetails.customerEmailID = this.customerDetails.emailId;
+    this.bookingDetails.customerId = this.customerId;
+    this.bookingDetails.seatNo = this.seatNo;
+    this.bookingDetails.price = this.bookingPrice;
+    this.bookingDetails.amountDeducted = this.priceDeduction;
+    this.locationService.createBooking(this.bookingDetails).subscribe(
+      data => {
+        this.router.navigate(["/success", data._id]);
+        console.log(data);
+      },
+      err => {
+        console.log(err);
       }
-    });
+    );
   }
 }

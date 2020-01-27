@@ -39,4 +39,16 @@ export class LocationService {
     const url = this.serviceUrl + "getcoupondetails";
     return this.http.get<any>(url);
   }
+  createBooking(data): Observable<any> {
+    const url = this.serviceUrl + "createbooking";
+    return this.http.post<any>(url, data);
+  }
+  getSingleBookings(id): Observable<any> {
+    const url = this.serviceUrl + "getbookings/" + id;
+    return this.http.get<any>(url);
+  }
+  createInvoice(data): Observable<any> {
+    const url = this.serviceUrl + "sendinvoice";
+    return this.http.post<any>(url, data);
+  }
 }

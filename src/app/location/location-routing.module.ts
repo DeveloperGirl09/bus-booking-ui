@@ -8,6 +8,7 @@ import { CustomerLoginComponent } from "./customer-login/customer-login.componen
 import { ViewBusDetailsComponent } from "./view-bus-details/view-bus-details.component";
 import { ViewSingleBusDetailsComponent } from "./view-single-bus-details/view-single-bus-details.component";
 import { BookNowComponent } from "./book-now/book-now.component";
+import { SuccessBookingComponent } from "./success-booking/success-booking.component";
 const routes: Routes = [
   {
     path: "list",
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: "booknow/:busid/seat/:seatno",
     component: BookNowComponent
+  },
+  {
+    path: "success/:booking",
+    component: SuccessBookingComponent
   }
 ];
 

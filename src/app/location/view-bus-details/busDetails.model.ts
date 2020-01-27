@@ -4,4 +4,5 @@ export class BusDetails {
   busDetails: String;
   pickup: String;
   destination: String;
+  couponApply: boolean;
 }

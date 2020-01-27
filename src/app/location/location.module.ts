@@ -12,6 +12,7 @@ import { CustomerLoginComponent } from "./customer-login/customer-login.componen
 import { ViewBusDetailsComponent } from './view-bus-details/view-bus-details.component';
 import { ViewSingleBusDetailsComponent } from './view-single-bus-details/view-single-bus-details.component';
 import { BookNowComponent } from './book-now/book-now.component';
+import { SuccessBookingComponent } from './success-booking/success-booking.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BookNowComponent } from './book-now/book-now.component';
     CustomerLoginComponent,
     ViewBusDetailsComponent,
     ViewSingleBusDetailsComponent,
-    BookNowComponent
+    BookNowComponent,
+    SuccessBookingComponent
   ],
   imports: [
     CommonModule,
